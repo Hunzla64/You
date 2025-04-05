@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Java Web App</title>
+    <style>
+        /* Fancy CSS Styles - Beginner Friendly! */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 3px dashed #ff6b6b;
+            animation: rainbowBorder 8s infinite linear;
+        }
+
+        @keyframes rainbowBorder {
+            0% { border-color: #ff6b6b; }
+            25% { border-color: #4ecdc4; }
+            50% { border-color: #ffd166; }
+            75% { border-color: #06d6a0; }
+            100% { border-color: #ff6b6b; }
+        }
+
+        h1 {
+            color: #ff6b6b;
+            font-size: 3rem;
+            text-shadow: 3px 3px 0 #fff, 5px 5px 0 rgba(0, 0, 0, 0.1);
+            margin: 0;
+        }
+
+        h2 {
+            color: #4ecdc4;
+            border-bottom: 2px dotted #ff6b6b;
+            padding-bottom: 10px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+            border-color: #ff6b6b;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #4ecdc4;
+            border-radius: 10px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #ff6b6b;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+            background: linear-gradient(to right, #ff8e8e, #ff6b6b);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .response-area {
+            background: rgba(78, 205, 196, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 2px dashed #4ecdc4;
+            font-family: 'Courier New', monospace;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .console {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            height: 200px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            border: 3px solid #ff6b6b;
+        }
+
+        .console-line {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .console-command {
+            color: #74b9ff;
+        }
+
+        .console-response {
+            color: #55efc4;
+        }
+
+        .console-error {
+            color: #ff7675;
+        }
+
+        .bounce {
+            animation: bounce 0.5s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-5px); }
+        }
+
+        .fancy-text {
+            background: linear-gradient(to right, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="fancy-text">Java</span> Magic App ✨</h1>
+            <p>Where HTML5, CSS3, and Java meet in fun!</p>
+        </header>
+        
+        <div class="card">
+            <h2>🌟 User Registration</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="username">👤 Username:</label>
+                    <input type="text" id="username" placeholder="Enter your cool username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">📧 Email:</label>
+                    <input type="email" id="email" placeholder="your.email@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">🔑 Password:</label>
+                    <input type="password" id="password" placeholder="Super secret password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="avatar">🦸 Choose Avatar:</label>
+                    <select id="avatar">
+                        <option value="🐶">Puppy</option>
+                        <option value="🐱">Kitty</option>
+                        <option value="🦄">Unicorn</option>
+                        <option value="🐲">Dragon</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn">✨ Register Now!</button>
+            </form>
+            
+            <div id="formResponse" class="response-area"></div>
+        </div>
+        
+        <div class="card">
+            <h2>🔢 Number Magic</h2>
+            <div class="form-group">
+                <label for="numberInput">Enter a number for Java to process:</label>
+                <input type="number" id="numberInput" placeholder="Any number you like!">
+            </div>
+            <button id="processNumber" class="btn">🎩 Do the Magic!</button>
+            
+            <div id="numberResponse" class="response-area"></div>
+        </div>
+        
+        <div class="card">
+            <h2>💻 Java Console Simulator</h2>
+            <div class="console" id="javaConsole">
+                <div class="console-line"><span class="console-command">>> System booting up...</span></div>
+                <div class="console-line"><span class="console-response">Welcome to Java Magic Console!</span></div>
+                <div class="console-line"><span class="console-command">>> Type "help" for commands</span></div>
+            </div>
+            <div class="form-group">
+                <input type="text" id="consoleInput" placeholder="Try: help, hello, calculate">
+            </div>
+            <button id="executeCommand" class="btn">🚀 Execute</button>
+        </div>
+    </div>
+    
+    <script>
+        // Simple Java-like simulator - Beginner Friendly!
+        class JavaMagic {
+            constructor() {
+                this.users = [];
+                this.commands = {
+                    help: () => "📖 Available commands:\nhello - Say hello\nhelp - Show this help\ncalculate - Do math\ndate - Show current date\nlistUsers - Show registered users\nclear - Clear console",
+                    hello: () => "👋 Hello there! Java greets you!",
+                    calculate: (args) => {
+                        try {
+                            return `🧮 Result: ${eval(args.join(' '))}`;
+                        } catch {
+                            return "❌ Error: Invalid calculation";
+                        }
+                    },
+                    date: () => "📅 " + new Date().toLocaleString(),
+                    listUsers: () => {
+                        if (this.users.length === 0) return "😢 No users registered yet";
+                        return "👥 Registered Users:\n" + this.users.map(u => `- ${u.username} ${u.avatar}`).join('\n');
+                    },
+                    clear: () => {
+                        document.getElementById('javaConsole').innerHTML = '';
+                        return "Console cleared!";
+                    }
+                };
+            }
+            
+            registerUser(username, email, avatar) {
+                const user = {
+                    id: this.users.length + 1,
+                    username,
+                    email,
+                    avatar,
+                    joined: new Date().toLocaleDateString()
+                };
+                this.users.push(user);
+                return user;
+            }
+            
+            numberMagic(number) {
+                return {
+                    squared: number * number,
+                    cubed: number * number * number,
+                    root: Math.sqrt(number).toFixed(2),
+                    isEven: number % 2 === 0 ? "Yes! 👍" : "No 👎",
+                    isPrime: this.checkPrime(number) ? "Yes! ✨" : "No 💤",
+                    factorial: this.calcFactorial(number)
+                };
+            }
+            
+            checkPrime(num) {
+                if (num <= 1) return false;
+                for (let i = 2; i < num; i++) if (num % i === 0) return false;
+                return true;
+            }
+            
+            calcFactorial(num) {
+                if (num < 0) return "Negative!";
+                if (num === 0) return 1;
+                let result = 1;
+                for (let i = 1; i <= num; i++) result *= i;
+                return result > 1000 ? result.toExponential(2) : result;
+            }
+            
+            executeCommand(cmd) {
+                const parts = cmd.split(' ');
+                const command = parts[0].toLowerCase();
+                const args = parts.slice(1);
+                
+                if (this.commands[command]) {
+                    return this.commands[command](args);
+                }
+                return `❌ Error: Unknown command '${command}'`;
+            }
+        }
+        
+        // Create our Java simulator
+        const javaMagic = new JavaMagic();
+        
+        // When page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // User registration form
+            document.getElementById('userForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const email = document.getElementById('email').value;
+                const avatar = document.getElementById('avatar').value;
+                
+                if (!username || !email) {
+                    showResponse('formResponse', '❌ Please fill all fields!', 'error');
+                    return;
+                }
+                
+                const user = javaMagic.registerUser(username, email, avatar);
+                showResponse('formResponse', 
+                    `✅ Success!\n\n✨ New User:\nUsername: ${user.username}\nEmail: ${user.email}\nAvatar: ${user.avatar}\nID: ${user.id}\nJoined: ${user.joined}`);
+                
+                addConsoleMessage(`New user registered: ${user.username} ${user.avatar}`);
+            });
+            
+            // Number magic button
+            document.getElementById('processNumber').addEventListener('click', function() {
+                const number = parseFloat(document.getElementById('numberInput').value);
+                
+                if (isNaN(number)) {
+                    showResponse('numberResponse', '🔢 Please enter a valid number!', 'error');
+                    return;
+                }
+                
+                const results = javaMagic.numberMagic(number);
+                let response = `🔢 Number Magic for ${number}:\n\n`;
+                response += `Squared: ${results.squared}\n`;
+                response += `Cubed: ${results.cubed}\n`;
+                response += `Square Root: ${results.root}\n`;
+                response += `Even Number? ${results.isEven}\n`;
+                response += `Prime Number? ${results.isPrime}\n`;
+                response += `Factorial: ${results.factorial}`;
+                
+                showResponse('numberResponse', response);
+                addConsoleMessage(`Processed number: ${number}`);
+            });
+            
+            // Console commands
+            document.getElementById('executeCommand').addEventListener('click', executeConsoleCommand);
+            document.getElementById('consoleInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') executeConsoleCommand();
+            });
+            
+            // Helper functions
+            function executeConsoleCommand() {
+                const command = document.getElementById('consoleInput').value;
+                if (!command.trim()) return;
+                
+                addConsoleMessage(`>> ${command}`, 'command');
+                const response = javaMagic.executeCommand(command);
+                addConsoleMessage(response, 'response');
+                
+                document.getElementById('consoleInput').value = '';
+            }
+            
+            function showResponse(elementId, message, type = 'success') {
+                const element = document.getElementById(elementId);
+                element.textContent = message;
+                element.style.display = 'block';
+                element.style.borderColor = type === 'error' ? '#ff6b6b' : '#4ecdc4';
+            }
+            
+            function addConsoleMessage(message, type = 'response') {
+                const consoleElement = document.getElementById('javaConsole');
+                const line = document.createElement('div');
+                line.className = 'console-line';
+                
+                const span = document.createElement('span');
+                span.className = `console-${type}`;
+                span.textContent = message;
+                
+                line.appendChild(span);
+                consoleElement.appendChild(line);
+                consoleElement.scrollTop = consoleElement.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
